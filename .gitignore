@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs
+/Lendtick.Product/.vs/Lendtick.Product
+/Lendtick.Product/Lendtick.Product.API.Core/obj
+/Lendtick.Product/Lendtick.Product.Business/obj
+/Lendtick.Product/Lendtick.Product.Business/bin/Debug/netcoreapp2.1
+/Lendtick.Product/Lendtick.Product.Common/obj
+/Lendtick.Product/Lendtick.Product.Common/bin/Debug/netcoreapp2.1
+/Lendtick.Product/Lendtick.Product.Data/obj
+/Lendtick.Product/Lendtick.Product.Data/bin/Debug/netcoreapp2.1
+/Lendtick.Product/Lentick.Product.xUnit/obj
+/Lendtick.Product/Lentick.Product.xUnit/bin/Debug/netcoreapp2.1

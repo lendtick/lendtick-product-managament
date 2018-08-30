@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lendtick.Product.Common\Lendtick.Product.Common.csproj" />
+    <ProjectReference Include="..\Lendtick.Product.Data\Lendtick.Product.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Business\" />
+    <Folder Include="Validator\" />
+    <Folder Include="Retriever\" />
+  </ItemGroup>
+
+</Project>
