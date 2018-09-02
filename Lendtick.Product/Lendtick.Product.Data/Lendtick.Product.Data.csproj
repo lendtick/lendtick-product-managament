@@ -8,4 +8,14 @@
     <ProjectReference Include="..\Lendtick.Product.Common\Lendtick.Product.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entity\SQL\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="MongoDB.Driver" Version="2.7.0" />
+    <PackageReference Include="MongoDbGenericRepository" Version="1.3.6" />
+  </ItemGroup>
+
 </Project>

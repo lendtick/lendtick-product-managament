@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "LENDTICK_CONN_STRING": "data source=lentick-dev.database.windows.net; initial catalog=lendtick; user id=adminlendtick; password=P@ssw0rd",
+    "LENDTICK_MONGODB_CONN_STRING": "mongodb://root:cWN4uF9OtVcW@137.116.150.95:27017"
+  }
+}

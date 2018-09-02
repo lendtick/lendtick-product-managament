@@ -1,0 +1,5 @@
+{
+  "LENDTICK_AUTH_URI": "https://lentick-api-user-management-dev.azurewebsites.net/auth",
+  "LENDTICK_AUTH_CHECK_URI": "https://lentick-api-user-management-dev.azurewebsites.net/auth/check",
+  "LENDTICK_MONGO_DATABASE_NAME": "master"
+}
