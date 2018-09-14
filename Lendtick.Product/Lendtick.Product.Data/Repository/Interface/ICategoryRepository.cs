@@ -1,14 +1,14 @@
-﻿using MongoDbGenericRepository;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Lendtick.Product.Data.Repository
 {
-    public interface ICategoryRepository : IBaseMongoRepository
+    public interface ICategoryRepository
     {
         string ParentCategory { get; }
 
-        IEnumerable<string> GetFirstCategory();
-        IEnumerable<string> GetSecondCategory();
-        IEnumerable<string> GetThirdCategory();
+        Task<IEnumerable<string>> GetFirstCategory();
+        Task<IEnumerable<string>> GetSecondCategory();
+        Task<IEnumerable<string>> GetThirdCategory();
     }
 }

@@ -9,10 +9,4 @@
     <ProjectReference Include="..\Lendtick.Product.Data\Lendtick.Product.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Business\" />
-    <Folder Include="Validator\" />
-    <Folder Include="Retriever\" />
-  </ItemGroup>
-
 </Project>

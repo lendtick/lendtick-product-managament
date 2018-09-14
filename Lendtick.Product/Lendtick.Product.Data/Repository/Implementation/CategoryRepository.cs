@@ -1,43 +1,60 @@
-﻿using Lendtick.Product.Data.MongoFactory;
-using MongoDbGenericRepository;
-using System;
+﻿using Lendtick.Product.Data.Entity.Mongo;
+using Lendtick.Product.Data.MongoFactory;
+using MongoDB.Driver;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Lendtick.Product.Data.Repository
 {
-    public class CategoryRepository : BaseMongoRepository, ICategoryRepository
+    public class CategoryRepository : ICategoryRepository
     {
         #region Property
         public string ParentCategory { get; private set; }
         #endregion
 
         #region CTOR
-        public CategoryRepository() : base(DatabaseFactory.LendtickMongo) { }
-        public CategoryRepository(string parentCategory) : base(DatabaseFactory.LendtickMongo)
+        public CategoryRepository() { }
+        public CategoryRepository(string parentCategory)
         {
             this.ParentCategory = parentCategory;
         }
         #endregion
 
         #region Implemented Methods
-        public IEnumerable<string> GetFirstCategory()
+        public async Task<IEnumerable<string>> GetFirstCategory()
         {
-            IEnumerable<Entity.Mongo.Category> categories = new List<Entity.Mongo.Category>();
-            //categories = base.GetCollection<Entity.Mongo.Category>();
-            throw new NotImplementedException();
+            IEnumerable<string> categories = new List<string>();
+            IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");
+            FieldDefinition<Category, string> field = "firstcategory";
+
+            categories = await collection.Distinct(field, Builders<Category>.Filter.Empty).ToListAsync();
+
+            return categories;
         }
 
-        public IEnumerable<string> GetSecondCategory()
+        public async Task<IEnumerable<string>> GetSecondCategory()
         {
-            throw new NotImplementedException();
+            IEnumerable<string> categories = new List<string>();
+            IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");
+            FieldDefinition<Category, string> field = "secondcategory";
+            FilterDefinition<Category> filter = new FilterDefinitionBuilder<Category>().Where(x => x.firstcategory == this.ParentCategory);
+
+            categories = await collection.Distinct(field, filter).ToListAsync();
+
+            return categories;
         }
 
-        public IEnumerable<string> GetThirdCategory()
+        public async Task<IEnumerable<string>> GetThirdCategory()
         {
-            throw new NotImplementedException();
+            IEnumerable<string> categories = new List<string>();
+            IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");
+            FieldDefinition<Category, string> field = "thirdcategory";
+            FilterDefinition<Category> filter = new FilterDefinitionBuilder<Category>().Where(x => x.secondcategory == this.ParentCategory);
+
+            categories = await collection.Distinct(field, filter).ToListAsync();
+
+            return categories;
         }
         #endregion
-
-
     }
 }

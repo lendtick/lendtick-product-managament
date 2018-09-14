@@ -1,0 +1,4 @@
+﻿namespace Lendtick.Product.Common
+{
+
+}
