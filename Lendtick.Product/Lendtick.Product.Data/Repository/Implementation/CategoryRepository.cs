@@ -1,5 +1,6 @@
 ﻿using Lendtick.Product.Data.Entity.Mongo;
 using Lendtick.Product.Data.MongoFactory;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,37 +22,39 @@ namespace Lendtick.Product.Data.Repository
         #endregion
 
         #region Implemented Methods
-        public async Task<IEnumerable<string>> GetFirstCategory()
+        public async Task<IEnumerable<Category>> GetFirstCategory()
         {
-            IEnumerable<string> categories = new List<string>();
+            IEnumerable<Category> categories = new List<Category>();
             IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");
-            FieldDefinition<Category, string> field = "firstcategory";
 
-            categories = await collection.Distinct(field, Builders<Category>.Filter.Empty).ToListAsync();
+            FilterDefinition<Category> filter = new FilterDefinitionBuilder<Category>().Size(x => x.parents, 0);
+            //ProjectionDefinition<Category> project = Builders<Category>.Projection.Include(x => x.id_categroy).Include(x => x.name).Exclude(x => x.id);
+            categories = await collection.Find(filter).ToListAsync();
+            return categories;
+        }
+
+        public async Task<IEnumerable<Category>> GetSecondCategory()
+        {
+            IEnumerable<Category> categories = new List<Category>();
+            IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");
+
+            FilterDefinitionBuilder<Category> builder = Builders<Category>.Filter;
+            FilterDefinition<Category> filter = builder.And(builder.Size(x => x.parents, 1), builder.Eq("parents", this.ParentCategory));
+
+            categories = await collection.Find(filter).ToListAsync();
 
             return categories;
         }
 
-        public async Task<IEnumerable<string>> GetSecondCategory()
+        public async Task<IEnumerable<Category>> GetThirdCategory()
         {
-            IEnumerable<string> categories = new List<string>();
+            IEnumerable<Category> categories = new List<Category>();
             IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");
-            FieldDefinition<Category, string> field = "secondcategory";
-            FilterDefinition<Category> filter = new FilterDefinitionBuilder<Category>().Where(x => x.firstcategory == this.ParentCategory);
 
-            categories = await collection.Distinct(field, filter).ToListAsync();
+            FilterDefinitionBuilder<Category> builder = Builders<Category>.Filter;
+            FilterDefinition<Category> filter = builder.And(builder.Size(x => x.parents, 2), builder.Eq("parents.1", this.ParentCategory));
 
-            return categories;
-        }
-
-        public async Task<IEnumerable<string>> GetThirdCategory()
-        {
-            IEnumerable<string> categories = new List<string>();
-            IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");
-            FieldDefinition<Category, string> field = "thirdcategory";
-            FilterDefinition<Category> filter = new FilterDefinitionBuilder<Category>().Where(x => x.secondcategory == this.ParentCategory);
-
-            categories = await collection.Distinct(field, filter).ToListAsync();
+            categories = await collection.Find(filter).ToListAsync();
 
             return categories;
         }

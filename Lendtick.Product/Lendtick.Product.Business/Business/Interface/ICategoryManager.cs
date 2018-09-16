@@ -1,4 +1,5 @@
 ﻿using Lendtick.Product.Common;
+using Lendtick.Product.Data.Entity.Mongo;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Lendtick.Product.Business.Business
     {
         #region Contract Property
         string ParentCategory { get; }
-        IEnumerable<string> Categories { get; }
+        IEnumerable<Category> Categories { get; }
         #endregion
 
         #region Contract Method

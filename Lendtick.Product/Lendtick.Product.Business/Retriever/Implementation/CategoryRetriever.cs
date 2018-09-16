@@ -1,4 +1,5 @@
-﻿using Lendtick.Product.Data.Repository;
+﻿using Lendtick.Product.Data.Entity.Mongo;
+using Lendtick.Product.Data.Repository;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace Lendtick.Product.Business.Retriever
         #endregion
 
         #region Implementation
-        public async Task<IEnumerable<string>> Retrieve()
+        public async Task<IEnumerable<Category>> Retrieve()
         {
             ICategoryRepository repo = new CategoryRepository();
             return await repo.GetFirstCategory();
@@ -33,7 +34,7 @@ namespace Lendtick.Product.Business.Retriever
         #endregion
 
         #region Implementation
-        public async Task<IEnumerable<string>> Retrieve()
+        public async Task<IEnumerable<Category>> Retrieve()
         {
             ICategoryRepository repo = new CategoryRepository(this.ParentCategory);
             return await repo.GetSecondCategory();
@@ -55,7 +56,7 @@ namespace Lendtick.Product.Business.Retriever
         #endregion
 
         #region Implementation
-        public async Task<IEnumerable<string>> Retrieve()
+        public async Task<IEnumerable<Category>> Retrieve()
         {
             ICategoryRepository repo = new CategoryRepository(this.ParentCategory);
             return await repo.GetThirdCategory();

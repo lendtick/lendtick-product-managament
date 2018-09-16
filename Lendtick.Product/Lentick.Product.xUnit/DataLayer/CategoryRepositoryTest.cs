@@ -1,4 +1,5 @@
-﻿using Lendtick.Product.Data.Repository;
+﻿using Lendtick.Product.Data.Entity.Mongo;
+using Lendtick.Product.Data.Repository;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
@@ -10,7 +11,7 @@ namespace Lentick.Product.xUnit.DataLayer
         [Fact]
         private async Task GetFirstCategory()
         {
-            IEnumerable<string> result = new List<string>();
+            IEnumerable<Category> result = new List<Category>();
             ICategoryRepository repo = new CategoryRepository();
 
             result = await repo.GetFirstCategory();
@@ -19,8 +20,8 @@ namespace Lentick.Product.xUnit.DataLayer
         [Fact]
         private async Task GetSecondCategory()
         {
-            IEnumerable<string> result = new List<string>();
-            ICategoryRepository repo = new CategoryRepository("Automotive");
+            IEnumerable<Category> result = new List<Category>();
+            ICategoryRepository repo = new CategoryRepository("CAT10001");
 
             result = await repo.GetSecondCategory();
         }
@@ -28,8 +29,8 @@ namespace Lentick.Product.xUnit.DataLayer
         [Fact]
         private async Task GetThirdategory()
         {
-            IEnumerable<string> result = new List<string>();
-            ICategoryRepository repo = new CategoryRepository("Computer DIY");
+            IEnumerable<Category> result = new List<Category>();
+            ICategoryRepository repo = new CategoryRepository("CAT20001");
 
             result = await repo.GetThirdCategory();
         }

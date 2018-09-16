@@ -1,12 +1,13 @@
 ﻿using Lendtick.Product.API.Core.Model.Response;
 using Lendtick.Product.Business.Business;
 using Lendtick.Product.Common;
+using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Lendtick.Product.API.Core.Controllers.Category
+namespace Lendtick.Product.API.Core.Controllers
 {
     [Authorize]
     [ApiController]
@@ -33,7 +34,7 @@ namespace Lendtick.Product.API.Core.Controllers.Category
                 return NotFound(response);
             }
 
-            response.Data = manager.Categories as List<string>;
+            response.Data = manager.Categories.Adapt<List<Category>>();
 
             return Ok(response);
         }
@@ -58,7 +59,7 @@ namespace Lendtick.Product.API.Core.Controllers.Category
                 return NotFound(response);
             }
 
-            response.Data = manager.Categories as List<string>;
+            response.Data = manager.Categories.Adapt<List<Category>>();
 
             return Ok(response);
         }
@@ -83,7 +84,7 @@ namespace Lendtick.Product.API.Core.Controllers.Category
                 return NotFound(response);
             }
 
-            response.Data = manager.Categories as List<string>;
+            response.Data = manager.Categories.Adapt<List<Category>>();
 
             return Ok(response);
         }

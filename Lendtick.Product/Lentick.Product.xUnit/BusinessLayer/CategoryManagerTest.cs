@@ -20,7 +20,7 @@ namespace Lentick.Product.xUnit.BusinessLayer
         public async Task GetSecondCategory()
         {
             IResultStatus result = new ResultStatus();
-            ICategoryManager manager = new CategoryManager("Automotive");
+            ICategoryManager manager = new CategoryManager("CAT10001");
 
             result = await manager.GetSecondCategory();
         }
@@ -29,7 +29,7 @@ namespace Lentick.Product.xUnit.BusinessLayer
         public async Task GetThirdCategory()
         {
             IResultStatus result = new ResultStatus();
-            ICategoryManager manager = new CategoryManager("Computer DIY");
+            ICategoryManager manager = new CategoryManager("CAT20001");
 
             result = await manager.GetThirdCategory();
         }

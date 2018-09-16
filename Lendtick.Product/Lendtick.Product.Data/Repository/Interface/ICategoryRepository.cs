@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Lendtick.Product.Data.Entity.Mongo;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Lendtick.Product.Data.Repository
@@ -7,8 +8,8 @@ namespace Lendtick.Product.Data.Repository
     {
         string ParentCategory { get; }
 
-        Task<IEnumerable<string>> GetFirstCategory();
-        Task<IEnumerable<string>> GetSecondCategory();
-        Task<IEnumerable<string>> GetThirdCategory();
+        Task<IEnumerable<Category>> GetFirstCategory();
+        Task<IEnumerable<Category>> GetSecondCategory();
+        Task<IEnumerable<Category>> GetThirdCategory();
     }
 }

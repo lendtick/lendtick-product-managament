@@ -1,5 +1,6 @@
 ﻿using Lendtick.Product.Common;
 using Lendtick.Product.Common.Resources;
+using Lendtick.Product.Data.Entity.Mongo;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,11 +9,11 @@ namespace Lendtick.Product.Business.Validator
     internal class CategoryValidator : IBaseValidator
     {
         #region Properties
-        public IEnumerable<string> Categories { get; private set; }
+        public IEnumerable<Category> Categories { get; private set; }
         #endregion
 
         #region CTOR
-        public CategoryValidator(IEnumerable<string> categories)
+        public CategoryValidator(IEnumerable<Category> categories)
         {
             this.Categories = categories;
         }

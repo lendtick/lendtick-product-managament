@@ -1,17 +1,22 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Collections.Generic;
 
 namespace Lendtick.Product.Data.Entity.Mongo
 {
+    [BsonIgnoreExtraElements]
     public class Category
     {
         [BsonId]
         public ObjectId id { get; set; }
-        [BsonElement("firstcategory")]
-        public string firstcategory { get; set; }
-        [BsonElement("secondcategory")]
-        public string secondcategory { get; set; }
-        [BsonElement("thirdcategory")]
-        public string thirdcategory { get; set; }
+
+        [BsonElement("id_categroy")]
+        public string id_categroy { get; set; }
+
+        [BsonElement("name")]
+        public string name { get; set; }
+
+        [BsonElement("parents")]
+        public IEnumerable<string> parents { get; set; }
     }
 }

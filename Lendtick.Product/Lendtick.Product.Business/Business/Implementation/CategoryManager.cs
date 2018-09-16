@@ -1,6 +1,7 @@
 ﻿using Lendtick.Product.Business.Retriever;
 using Lendtick.Product.Business.Validator;
 using Lendtick.Product.Common;
+using Lendtick.Product.Data.Entity.Mongo;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Lendtick.Product.Business.Business
     {
         #region Property
         public string ParentCategory { get; private set; }
-        public IEnumerable<string> Categories { get; private set; }
+        public IEnumerable<Category> Categories { get; private set; }
         #endregion
 
         #region CTOR
