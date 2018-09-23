@@ -12,8 +12,8 @@ namespace Lendtick.Product.API.Core
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseSetting("detailederror", "true")
-            .CaptureStartupErrors(true)
-            .UseStartup<Startup>();
+                   .UseSetting("detailedErrors", "true")
+                   .CaptureStartupErrors(true)
+                   .UseStartup<Startup>();
     }
 }
