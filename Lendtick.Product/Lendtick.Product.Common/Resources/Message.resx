@@ -120,6 +120,9 @@
   <data name="ERROR_DATA_NOT_FOUND" xml:space="preserve">
     <value>Data {0} tidak ditemukan.</value>
   </data>
+  <data name="ERROR_INSERT" xml:space="preserve">
+    <value>Data {0} gagal disimpan.</value>
+  </data>
   <data name="ERROR_REQUEST_AUTH_NOT_FOUND" xml:space="preserve">
     <value>Request tidak memiliki header Authorization.</value>
   </data>
@@ -131,5 +134,8 @@
   </data>
   <data name="SUCCESS_DATA_FOUND" xml:space="preserve">
     <value>Data {0} berhasil ditemukan.</value>
+  </data>
+  <data name="SUCCESS_INSERT" xml:space="preserve">
+    <value>Data {0} berhasil disimpan.</value>
   </data>
 </root>

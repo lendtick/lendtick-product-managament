@@ -70,6 +70,15 @@ namespace Lendtick.Product.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data {0} gagal disimpan..
+        /// </summary>
+        public static string ERROR_INSERT {
+            get {
+                return ResourceManager.GetString("ERROR_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request tidak memiliki header Authorization..
         /// </summary>
         public static string ERROR_REQUEST_AUTH_NOT_FOUND {
@@ -102,6 +111,15 @@ namespace Lendtick.Product.Common.Resources {
         public static string SUCCESS_DATA_FOUND {
             get {
                 return ResourceManager.GetString("SUCCESS_DATA_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data {0} berhasil disimpan..
+        /// </summary>
+        public static string SUCCESS_INSERT {
+            get {
+                return ResourceManager.GetString("SUCCESS_INSERT", resourceCulture);
             }
         }
     }

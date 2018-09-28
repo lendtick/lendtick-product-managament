@@ -73,5 +73,21 @@ namespace Lendtick.Product.API.Core.Controllers
 
             return Ok(response);
         }
+
+        /// <summary>
+        /// Add product data returned from channel to party for enrichement
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("party")]
+        [Produces("application/json")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200, Type = typeof(BaseListResponse<object>))]
+        public async Task<ActionResult<BaseListResponse<object>>> AddToParty([FromBody]PartyRequest request)
+        {
+            BaseListResponse<object> response = new BaseListResponse<object>();
+
+            return Ok(response);
+        }
     }
 }

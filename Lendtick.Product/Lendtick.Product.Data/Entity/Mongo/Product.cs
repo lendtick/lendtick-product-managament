@@ -41,7 +41,7 @@ namespace Lendtick.Product.Data.Entity.Mongo
         public Variants Variants { get; set; }
 
         [BsonElement("lastUpdated")]
-        public Int64 LastUpdated { get; set; }
+        public long LastUpdated { get; set; }
     }
 
     [BsonIgnoreExtraElements]
