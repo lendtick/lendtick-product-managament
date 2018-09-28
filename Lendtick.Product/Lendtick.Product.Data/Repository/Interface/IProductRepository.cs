@@ -7,6 +7,8 @@ namespace Lendtick.Product.Data.Repository
     {
         string Criteria { get; }
 
-        Task<IEnumerable<Entity.Mongo.Product>> SearchProduct();
+        Task<IEnumerable<Entity.Mongo.Product>> SearchProductAsync();
+
+        Task<IEnumerable<Entity.Mongo.Product>> GetAllProductAsync();
     }
 }

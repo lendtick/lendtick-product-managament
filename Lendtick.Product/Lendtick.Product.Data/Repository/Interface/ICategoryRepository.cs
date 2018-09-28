@@ -8,8 +8,8 @@ namespace Lendtick.Product.Data.Repository
     {
         string ParentCategory { get; }
 
-        Task<IEnumerable<Category>> GetFirstCategory();
-        Task<IEnumerable<Category>> GetSecondCategory();
-        Task<IEnumerable<Category>> GetThirdCategory();
+        Task<IEnumerable<Category>> GetFirstCategoryAsync();
+        Task<IEnumerable<Category>> GetSecondCategoryAsync();
+        Task<IEnumerable<Category>> GetThirdCategoryAsync();
     }
 }

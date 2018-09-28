@@ -1,6 +1,5 @@
 ﻿using Lendtick.Product.Data.Entity.Mongo;
 using Lendtick.Product.Data.MongoFactory;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,7 +21,7 @@ namespace Lendtick.Product.Data.Repository
         #endregion
 
         #region Implemented Methods
-        public async Task<IEnumerable<Category>> GetFirstCategory()
+        public async Task<IEnumerable<Category>> GetFirstCategoryAsync()
         {
             IEnumerable<Category> categories = new List<Category>();
             IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");
@@ -33,7 +32,7 @@ namespace Lendtick.Product.Data.Repository
             return categories;
         }
 
-        public async Task<IEnumerable<Category>> GetSecondCategory()
+        public async Task<IEnumerable<Category>> GetSecondCategoryAsync()
         {
             IEnumerable<Category> categories = new List<Category>();
             IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");
@@ -46,7 +45,7 @@ namespace Lendtick.Product.Data.Repository
             return categories;
         }
 
-        public async Task<IEnumerable<Category>> GetThirdCategory()
+        public async Task<IEnumerable<Category>> GetThirdCategoryAsync()
         {
             IEnumerable<Category> categories = new List<Category>();
             IMongoCollection<Category> collection = DatabaseFactory.LendtickMongo.GetCollection<Category>("category");

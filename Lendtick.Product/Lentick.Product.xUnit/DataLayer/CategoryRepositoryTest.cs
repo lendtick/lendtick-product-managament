@@ -14,7 +14,7 @@ namespace Lentick.Product.xUnit.DataLayer
             IEnumerable<Category> result = new List<Category>();
             ICategoryRepository repo = new CategoryRepository();
 
-            result = await repo.GetFirstCategory();
+            result = await repo.GetFirstCategoryAsync();
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace Lentick.Product.xUnit.DataLayer
             IEnumerable<Category> result = new List<Category>();
             ICategoryRepository repo = new CategoryRepository("CAT10001");
 
-            result = await repo.GetSecondCategory();
+            result = await repo.GetSecondCategoryAsync();
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace Lentick.Product.xUnit.DataLayer
             IEnumerable<Category> result = new List<Category>();
             ICategoryRepository repo = new CategoryRepository("CAT20001");
 
-            result = await repo.GetThirdCategory();
+            result = await repo.GetThirdCategoryAsync();
         }
     }
 }

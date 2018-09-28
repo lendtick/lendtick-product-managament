@@ -15,7 +15,17 @@ namespace Lendtick.Product.Data.Repository
             this.Criteria = criteria;
         }
 
-        public async Task<IEnumerable<Entity.Mongo.Product>> SearchProduct()
+        public async Task<IEnumerable<Entity.Mongo.Product>> SearchProductAsync()
+        {
+            IEnumerable<Entity.Mongo.Product> products = new List<Entity.Mongo.Product>();
+            IMongoCollection<Entity.Mongo.Product> collection = DatabaseFactory.LendtickMongo.GetCollection<Entity.Mongo.Product>("product");
+
+            products = await collection.Find(Builders<Entity.Mongo.Product>.Filter.Empty).ToListAsync();
+
+            return products;
+        }
+
+        public async Task<IEnumerable<Entity.Mongo.Product>> GetAllProductAsync()
         {
             IEnumerable<Entity.Mongo.Product> products = new List<Entity.Mongo.Product>();
             IMongoCollection<Entity.Mongo.Product> collection = DatabaseFactory.LendtickMongo.GetCollection<Entity.Mongo.Product>("product");

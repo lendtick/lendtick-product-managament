@@ -29,7 +29,7 @@ namespace Lendtick.Product.Business.Business
             IResultStatus result = new ResultStatus();
             ICategoryRetriever retriever = new FirstCategoryRetriever();
 
-            this.Categories = await retriever.Retrieve();
+            this.Categories = await retriever.RetrieveListAsync();
 
             IBaseValidator validator = new CategoryValidator(this.Categories);
             result = validator.Validate();
@@ -42,7 +42,7 @@ namespace Lendtick.Product.Business.Business
             IResultStatus result = new ResultStatus();
             ICategoryRetriever retriever = new SecondCategoryRetriever(this.ParentCategory);
 
-            this.Categories = await retriever.Retrieve();
+            this.Categories = await retriever.RetrieveListAsync();
 
             IBaseValidator validator = new CategoryValidator(this.Categories);
             result = validator.Validate();
@@ -55,7 +55,7 @@ namespace Lendtick.Product.Business.Business
             IResultStatus result = new ResultStatus();
             ICategoryRetriever retriever = new ThirdCategoryRetriever(this.ParentCategory);
 
-            this.Categories = await retriever.Retrieve();
+            this.Categories = await retriever.RetrieveListAsync();
 
             IBaseValidator validator = new CategoryValidator(this.Categories);
             result = validator.Validate();

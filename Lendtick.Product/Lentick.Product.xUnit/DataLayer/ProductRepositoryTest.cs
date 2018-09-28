@@ -14,7 +14,7 @@ namespace Lentick.Product.xUnit.DataLayer
                 new List<Lendtick.Product.Data.Entity.Mongo.Product>();
             IProductRepository repo = new ProductRepository();
 
-            result = await repo.SearchProduct();
+            result = await repo.SearchProductAsync();
         }
     }
 }

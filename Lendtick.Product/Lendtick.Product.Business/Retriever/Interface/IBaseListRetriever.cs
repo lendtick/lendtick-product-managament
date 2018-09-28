@@ -4,6 +4,6 @@ namespace Lendtick.Product.Business.Retriever
 {
     internal interface IBaseListRetriever<T>
     {
-        IEnumerable<T> Retrieve();
+        IEnumerable<T> RetrieveList();
     }
 }

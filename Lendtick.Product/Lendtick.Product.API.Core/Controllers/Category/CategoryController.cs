@@ -14,6 +14,10 @@ namespace Lendtick.Product.API.Core.Controllers
     [Route("master")]
     public class CategoryController : ControllerBase
     {
+        /// <summary>
+        /// Get first level product category
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("firstcategory")]
         [Produces("application/json")]
         [ProducesResponseType(404)]
@@ -39,6 +43,11 @@ namespace Lendtick.Product.API.Core.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Get second level category based on first level category
+        /// </summary>
+        /// <param name="parentCategory"></param>
+        /// <returns></returns>
         [HttpGet("secondcategory")]
         [Produces("application/json")]
         [ProducesResponseType(404)]
@@ -64,6 +73,11 @@ namespace Lendtick.Product.API.Core.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Get third level category based on second level category
+        /// </summary>
+        /// <param name="parentCategory"></param>
+        /// <returns></returns>
         [HttpGet("thirdcategory")]
         [Produces("application/json")]
         [ProducesResponseType(404)]

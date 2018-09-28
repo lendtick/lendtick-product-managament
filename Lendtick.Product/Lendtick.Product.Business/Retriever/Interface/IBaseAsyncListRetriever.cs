@@ -5,6 +5,6 @@ namespace Lendtick.Product.Business.Retriever
 {
     internal interface IBaseAsyncListRetriever<T>
     {
-        Task<IEnumerable<T>> Retrieve();
+        Task<IEnumerable<T>> RetrieveListAsync();
     }
 }

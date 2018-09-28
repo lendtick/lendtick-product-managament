@@ -12,10 +12,10 @@ namespace Lendtick.Product.Business.Retriever
         #endregion
 
         #region Implementation
-        public async Task<IEnumerable<Category>> Retrieve()
+        public async Task<IEnumerable<Category>> RetrieveListAsync()
         {
             ICategoryRepository repo = new CategoryRepository();
-            return await repo.GetFirstCategory();
+            return await repo.GetFirstCategoryAsync();
         } 
         #endregion
     }
@@ -34,10 +34,10 @@ namespace Lendtick.Product.Business.Retriever
         #endregion
 
         #region Implementation
-        public async Task<IEnumerable<Category>> Retrieve()
+        public async Task<IEnumerable<Category>> RetrieveListAsync()
         {
             ICategoryRepository repo = new CategoryRepository(this.ParentCategory);
-            return await repo.GetSecondCategory();
+            return await repo.GetSecondCategoryAsync();
         } 
         #endregion
     }
@@ -56,10 +56,10 @@ namespace Lendtick.Product.Business.Retriever
         #endregion
 
         #region Implementation
-        public async Task<IEnumerable<Category>> Retrieve()
+        public async Task<IEnumerable<Category>> RetrieveListAsync()
         {
             ICategoryRepository repo = new CategoryRepository(this.ParentCategory);
-            return await repo.GetThirdCategory();
+            return await repo.GetThirdCategoryAsync();
         } 
         #endregion
     }
