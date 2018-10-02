@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Lendtick.Product.Common\Lendtick.Product.Common.csproj" />
     <ProjectReference Include="..\Lendtick.Product.Data\Lendtick.Product.Data.csproj" />
   </ItemGroup>

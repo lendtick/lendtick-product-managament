@@ -73,6 +73,10 @@ namespace Lendtick.Product.API.Core
             }).AddLentickJWTAuth(o => { });
 
             services.AddSingleton(new HttpClient() { BaseAddress = new Uri(AppConst.LENDTICK_AUTH_CHECK_URI) });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin", builder => builder.AllowAnyOrigin());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -93,6 +97,9 @@ namespace Lendtick.Product.API.Core
                 c.SwaggerEndpoint("/swagger/dev/swagger.json", "Lendtick.Product.API.Core");
                 c.RoutePrefix = "swagger";
             });
+
+            app.UseCors("AllowAnyOrigin");
+
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();

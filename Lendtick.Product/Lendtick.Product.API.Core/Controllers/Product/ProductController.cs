@@ -2,10 +2,12 @@
 using Lendtick.Product.API.Core.Model.Response;
 using Lendtick.Product.Business.Business;
 using Lendtick.Product.Common;
+using Lendtick.Product.Common.Domain;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Lendtick.Product.API.Core.Controllers
@@ -81,12 +83,25 @@ namespace Lendtick.Product.API.Core.Controllers
         /// <returns></returns>
         [HttpPost("party")]
         [Produces("application/json")]
-        [ProducesResponseType(404)]
+        [ProducesResponseType(503)]
         [ProducesResponseType(200, Type = typeof(BaseListResponse<object>))]
         public async Task<ActionResult<BaseListResponse<object>>> AddToParty([FromBody]PartyRequest request)
         {
+            IProductManager manager;
+            Party domain = new Party();
+            IResultStatus result = new ResultStatus();
             BaseListResponse<object> response = new BaseListResponse<object>();
 
+            domain = request.Adapt<Party>();
+            manager = new ProductManager(domain);
+
+            result = await manager.AddToParty();
+
+            if (!result.IsSuccess)
+            {
+                return StatusCode((int)HttpStatusCode.ServiceUnavailable, response);
+            }
+            
             return Ok(response);
         }
     }
