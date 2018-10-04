@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -29,6 +30,16 @@ namespace Lendtick.Product.API.Core
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
+            });
+            services.Configure<MvcOptions>(option => {
+                option.Filters.Add(new CorsAuthorizationFilterFactory("AllowAll"));
+            });
             services.AddMvc(options =>
             {
                 options.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build()));
@@ -73,10 +84,6 @@ namespace Lendtick.Product.API.Core
             }).AddLentickJWTAuth(o => { });
 
             services.AddSingleton(new HttpClient() { BaseAddress = new Uri(AppConst.LENDTICK_AUTH_CHECK_URI) });
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAnyOrigin", builder => builder.AllowAnyOrigin());
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,8 +105,7 @@ namespace Lendtick.Product.API.Core
                 c.RoutePrefix = "swagger";
             });
 
-            app.UseCors("AllowAnyOrigin");
-
+            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();
