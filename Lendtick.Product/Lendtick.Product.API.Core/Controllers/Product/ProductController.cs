@@ -104,5 +104,14 @@ namespace Lendtick.Product.API.Core.Controllers
             
             return Ok(response);
         }
+
+        [HttpPost("product")]
+        [Produces("application/json")]
+        [ProducesResponseType(503)]
+        [ProducesResponseType(200, Type = typeof(BaseListResponse<object>))]
+        public async Task<ActionResult<BaseListResponse<object>>> InsertProduct([FromBody]ProductRequest request)
+        {
+            return Ok(request);
+        }
     }
 }
