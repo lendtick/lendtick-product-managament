@@ -90,4 +90,11 @@ namespace Lendtick.Product.API.Core.Model.Request
         public string Name { get; set; }
     }
     #endregion
+
+    #region PRODUCT
+    public class ProductRequest
+    {
+        public string nama { get; set; }
+    }
+    #endregion
 }
