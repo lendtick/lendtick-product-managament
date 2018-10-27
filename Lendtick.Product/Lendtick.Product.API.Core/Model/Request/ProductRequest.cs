@@ -92,9 +92,11 @@ namespace Lendtick.Product.API.Core.Model.Request
     #endregion
 
     #region PRODUCT
-    public class ProductRequest
+    public class ProductSearchRequest : BaseSearchRequest
     {
         public string nama { get; set; }
+        public int price { get; set; }
+        public List<string> color { get; set; }
     }
     #endregion
 }

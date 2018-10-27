@@ -51,11 +51,11 @@ namespace Lendtick.Product.API.Core.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpGet("product")]
+        [HttpGet("product/search")]
         [Produces("application/json")]
         [ProducesResponseType(404)]
         [ProducesResponseType(200, Type = typeof(ProductResponse))]
-        public async Task<ActionResult<ProductResponse>> SearchProduct([FromRoute] BaseSearchRequest request)
+        public async Task<ActionResult<ProductResponse>> SearchProduct([FromQuery] ProductSearchRequest request)
         {
             IResultStatus result = new ResultStatus();
             ProductResponse response = new ProductResponse();
@@ -109,9 +109,9 @@ namespace Lendtick.Product.API.Core.Controllers
         [Produces("application/json")]
         [ProducesResponseType(503)]
         [ProducesResponseType(200, Type = typeof(BaseListResponse<object>))]
-        public async Task<ActionResult<BaseListResponse<object>>> InsertProduct([FromBody]ProductRequest request)
+        public async Task<ActionResult<BaseListResponse<object>>> InsertProduct()
         {
-            return Ok(request);
+            return Ok();
         }
     }
 }
