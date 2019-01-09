@@ -2,6 +2,5 @@
 
 namespace Lendtick.Product.API.Core.AppHelper.Scheme
 {
-    public class LendTickAuthSchemeOptions : AuthenticationSchemeOptions
-    { }
+    public class LendTickAuthSchemeOptions : AuthenticationSchemeOptions { }
 }
