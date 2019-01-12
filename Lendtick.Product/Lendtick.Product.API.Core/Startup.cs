@@ -18,8 +18,6 @@ using System.Reflection;
 
 namespace Lendtick.Product.API.Core
 {
-    /// <summary>
-    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)
