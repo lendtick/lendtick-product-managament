@@ -12,6 +12,7 @@ namespace Lendtick.Product.Business.Business
     public class ProductManager : BaseBusinessManager, IProductManager
     {
         #region Property
+        public SearchProduct Criteria { get; private set; }
         public IEnumerable<Data.Entity.Mongo.Product> Products { get; private set; }
         public Party Party { get; private set; }
         #endregion
@@ -22,10 +23,9 @@ namespace Lendtick.Product.Business.Business
         {
             this.Party = party;
         }
-        public ProductManager(string searchBy, string sortBy)
+        public ProductManager(SearchProduct criteria)
         {
-            this.SearchBy = searchBy;
-            this.SortBy = sortBy;
+            this.Criteria = criteria;
         }
         #endregion
 
@@ -46,7 +46,7 @@ namespace Lendtick.Product.Business.Business
         public async Task<IResultStatus> SearchProduct()
         {
             IResultStatus result = new ResultStatus();
-            IProductRetriever retriever = new SearchProductRetriever();
+            IProductRetriever retriever = new SearchProductRetriever(this.Criteria);
 
             this.Products = await retriever.RetrieveListAsync();
 

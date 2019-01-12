@@ -60,7 +60,7 @@ namespace Lendtick.Product.API.Core.Controllers
             IResultStatus result = new ResultStatus();
             ProductResponse response = new ProductResponse();
 
-            IProductManager manager = new ProductManager(request.search, request.sort_by);
+            IProductManager manager = new ProductManager(request.Adapt<SearchProduct>());
             result = await manager.SearchProduct();
 
             response.Status = result.IsSuccess;

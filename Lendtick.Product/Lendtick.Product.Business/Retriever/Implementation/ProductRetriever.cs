@@ -1,4 +1,5 @@
-﻿using Lendtick.Product.Data.Repository;
+﻿using Lendtick.Product.Common.Domain;
+using Lendtick.Product.Data.Repository;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,17 +7,18 @@ namespace Lendtick.Product.Business.Retriever
 {
     internal class SearchProductRetriever : BaseRetriever, IProductRetriever
     {
+        public SearchProduct Criteria { get; private set; }
+
         public SearchProductRetriever() { }
-        public SearchProductRetriever(string searchBy, string sortBy)
+        public SearchProductRetriever(SearchProduct criteria)
         {
-            this.SearchBy = searchBy;
-            this.SortBy = sortBy;
+            this.Criteria = criteria;
         }
 
         public async Task<IEnumerable<Data.Entity.Mongo.Product>> RetrieveListAsync()
         {
             IEnumerable<Data.Entity.Mongo.Product> products = new List<Data.Entity.Mongo.Product>();
-            ProductRepository repo = new ProductRepository(this.SearchBy);
+            ProductRepository repo = new ProductRepository(this.Criteria);
 
             products = await repo.SearchProductAsync();
 
