@@ -101,7 +101,7 @@ namespace Lendtick.Product.API.Core.Controllers
             {
                 return StatusCode((int)HttpStatusCode.ServiceUnavailable, response);
             }
-            
+
             return Ok(response);
         }
 

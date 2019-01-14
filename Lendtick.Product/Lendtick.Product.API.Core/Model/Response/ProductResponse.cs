@@ -7,89 +7,98 @@ namespace Lendtick.Product.API.Core.Model.Response
 
     public class Product
     {
-        public string _id { get; set; }
-        public IEnumerable<Desc> desc { get; set; }
-        public string Name { get; set; }
-        public string Lname { get; set; }
-        public string Category { get; set; }
-        public Brand Brand { get; set; }
-        public Assets Assets { get; set; }
-        public Shipping Shipping { get; set; }
-        public IEnumerable<Specs> specs { get; set; }
-        public IEnumerable<Attrs> attrs { get; set; }
-        public Variants Variants { get; set; }
-        public long LastUpdated { get; set; }
+        public string id_product { get; set; }
+        public List<ProductDesc> desc { get; set; }
+        public string name { get; set; }
+        public string lname { get; set; }
+        public string category { get; set; }
+        public ProductBrand brand { get; set; }
+        public ProductPrice price { get; set; }
+        public ProductAssets assets { get; set; }
+        public ProductShipping shipping { get; set; }
+        public List<ProductChannel> channel { get; set; }
+        public List<ProductAttr> attrs { get; set; }
+        public string lastUpdated { get; set; }
     }
 
-    public class Desc
+    public class ProductDesc
     {
-        public string Lang { get; set; }
-        public string Val { get; set; }
+        public string lang { get; set; }
+        public string val { get; set; }
     }
 
-    public class Brand
+    public class ProductImg
     {
-        public string Id { get; set; }
-        public BrandImg Img { get; set; }
-        public string Name { get; set; }
+        public string src { get; set; }
     }
 
-    public class BrandImg
+    public class ProductBrand
     {
-        public string Src { get; set; }
+        public ProductImg img { get; set; }
+        public string name { get; set; }
     }
 
-    public class Assets
+    public class ProductPromo2
     {
-        public IEnumerable<Imgs> imgs { get; set; }
+        public string id_promo { get; set; }
+        public string promo_name { get; set; }
     }
 
-    public class Imgs
+    public class ProductPromo
     {
-        public Img Img { get; set; }
+        public List<ProductPromo2> promo { get; set; }
     }
 
-    public class Img
+    public class ProductPrice
     {
-        public string Height { get; set; }
-        public string Src { get; set; }
-        public string Width { get; set; }
+        public decimal base_price { get; set; }
+        public string margin_type { get; set; }
+        public decimal margin_amount { get; set; }
+        public decimal sell_price { get; set; }
+        public List<ProductPromo> promos { get; set; }
     }
 
-    public class Shipping
+    public class ProductAssets
     {
-        public Dimensions Dimensions { get; set; }
-        public string Weight { get; set; }
+        public List<ProductImg2> imgs { get; set; }
     }
 
-    public class Dimensions
+    public class ProductImg2
     {
-        public string Height { get; set; }
-        public string Length { get; set; }
-        public string Width { get; set; }
+        public ProductImg3 img { get; set; }
     }
 
-    public class Specs
+    public class ProductImg3
     {
-        public string Name { get; set; }
-        public string Val { get; set; }
+        public string height { get; set; }
+        public string src { get; set; }
+        public string width { get; set; }
     }
 
-    public class Attrs
+    public class ProductShipping
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public ProductDimensions dimensions { get; set; }
+        public string weight { get; set; }
     }
 
-    public class Variants
+    public class ProductDimensions
     {
-        public int Cnt { get; set; }
-        public IEnumerable<VarianAttrs> attrs { get; set; }
+        public string height { get; set; }
+        public string length { get; set; }
+        public string width { get; set; }
     }
 
-    public class VarianAttrs
+    public class ProductChannel
     {
-        public string DispType { get; set; }
-        public string Name { get; set; }
+        public string channel_id { get; set; }
+        public string channel_name { get; set; }
+        public string channel_image { get; set; }
+        public string channel_product_id { get; set; }
+    }
+
+    public class ProductAttr
+    {
+        public string name { get; set; }
+        public string value { get; set; }
     }
 }
